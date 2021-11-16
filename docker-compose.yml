@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  dbserver:
+    container_name: postgres_etl
+    build: ./postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGPASSWORD=${PGPASSWORD}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    tty: true
+  digdag:
+    container_name: digdag_etl
+    build: ./digdag
+    ports:
+      - "0.0.0.0:65432:65432"
+    tty: true
+    # 以下コメントアウト部分はDockerfileに寄せた。
+    # volumes:
+    #   - ./digdag:/root
+      # /tmpディレクトリがないとDigdagサーバーのホーム画面が起動しないので明示的にマウント。
+      # - /tmp:/tmp
+    # entrypoint: >
+    
+    #   sh -c "/root/startup.sh && /bin/bash"
+
+networks:
+  etl_networks:

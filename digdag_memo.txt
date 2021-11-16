@@ -1,0 +1,62 @@
+# やることリスト
+- Digdag cliとサーバーの関係をつかむ
+  - digdag server ブラウザから使えるようにすること
+  - digdag server postgreで接続しつつ使えるようにすること
+    - postgreにデータ永続化できるか確認すること。
+      - postgresのデータさえ入っていれば永続化される。
+- DigdagからLambdaでhello world実行
+- コンテナ起動時にDigdagでhello world
+- コンテナ起動時にLambda実行して終了まで。
+- scheduler使ってみる
+
+# 調査内容
+- Lambdaもcode化できないか調査
+
+# digdag server ブラウザからの確認は以下のコマンドでサーバー起動すればok
+- digdag server --memory --bind 0.0.0.0 --port 65432 --task-log /var/log/digdag/ --access-log /var/log/digdag
+# 次はpsqlの設定ファイルを読み込みつつ、ブラウザから確認できるようにすること。
+- digdag server --config ./etc/digdag.properties --bind 0.0.0.0 --port 65432 --task-log /var/log/digdag/ --access-log /var/log/digdag
+
+
+
+# Digdag
+- 使い方
+- Dockerfileの書き方
+## superbisorとは
+> Digdag はデーモンなのですが本番環境などで安定的な常駐を実現しようと思ったら Supervisor が良いです。ウェブに記事が多くあるのでその手順どおりで簡単に連携できます。
+- ref:https://www.task-notes.com/entry/20170311/1489224418#:~:text=Supervisor%20%E3%81%A8%E3%81%AF%20Python%20%E8%A3%BD,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82&text=%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%8C%E5%AE%8C%E4%BA%86%E3%81%99%E3%82%8B%E3%81%A8%E8%B5%B7%E5%8B%95,%E4%BB%A5%E4%B8%8B%E3%81%AB%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%80%82
+
+## docker-compose up時にDigdagサーバー起動して、ワークフロー実行させるには
+- docker-compose.ymlにcommandを書くか
+- DockerfileにCMDで書くか
+- Dockerfileにentrypointを書くか
+
+curl -k -X GET https://buk8hjmoua.execute-api.ap-northeast-1.amazonaws.com/dev/transferMyLibrary
+
+
+timezone: "Asia/Tokyo"
+
++transfer_my_library:
+  sh>: curl -k -X GET https://buk8hjmoua.execute-api.ap-northeast-1.amazonaws.com/dev/transferMyLibrary
+
+
+
+timezone: "Asia/Tokyo"
+
+schedule:
+  daily>: 12:00:00
+
++transfer_my_library:
+  sh>: curl -k -X GET https://qrm4zouru9.execute-api.ap-northeast-1.amazonaws.com/dev/test
+
+
+
+arn:aws:execute-api:ap-northeast-1:967779532659:od0fg8tn9e/*/GET/test
+
+- DigdagをECRからpullして実行する方法
+  - githubからimageをpullしてきて、それをタスクとして実行させるようにする。
+    - Dockerfileにてentrypoint実行できるのかどうか
+    - entrypointのシェルにて、git pull できるかどうか
+    - entrypointのシェルにて、pullしてきたファイルをdigdag server にpushできるかどうか
+    - entrypointのシェルにて、pushしたプロジェクトをキックできるかどうか
+- そもそもgithub→circle ci→ECRで解決できそうな気がしている。

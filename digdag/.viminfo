@@ -1,0 +1,72 @@
+# この viminfo ファイルは Vim 8.1 によって生成されました.
+# 変更する際には十分注意してください!
+
+# Viminfo version
+|1,4
+
+# このファイルが書かれた時の 'encoding' の値
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# コマンドライン 項目の履歴 (新しいものから古いものへ):
+:q
+|2,0,1630208931,,"q"
+:wq
+|2,0,1629331701,,"wq"
+
+# 検索文字列 項目の履歴 (新しいものから古いものへ):
+
+# 式 項目の履歴 (新しいものから古いものへ):
+
+# 入力行 項目の履歴 (新しいものから古いものへ):
+
+# デバッグ行 項目の履歴 (新しいものから古いものへ):
+
+# レジスタ:
+
+# ファイルマーク:
+'0  4  27  ~/etc/digdag.properties
+|4,48,4,27,1630208931,"~/etc/digdag.properties"
+'1  449  0  /var/log/digdag/access.log
+|4,49,449,0,1629333294,"/var/log/digdag/access.log"
+'2  4  27  ~/etc/digdag.properties
+|4,50,4,27,1629331701,"~/etc/digdag.properties"
+
+# ジャンプリスト (新しいものが先):
+-'  4  27  ~/etc/digdag.properties
+|4,39,4,27,1630208931,"~/etc/digdag.properties"
+-'  449  0  /var/log/digdag/access.log
+|4,39,449,0,1629333294,"/var/log/digdag/access.log"
+-'  449  0  /var/log/digdag/access.log
+|4,39,449,0,1629333294,"/var/log/digdag/access.log"
+-'  1  0  /var/log/digdag/access.log
+|4,39,1,0,1629333290,"/var/log/digdag/access.log"
+-'  1  0  /var/log/digdag/access.log
+|4,39,1,0,1629333290,"/var/log/digdag/access.log"
+-'  4  27  ~/etc/digdag.properties
+|4,39,4,27,1629331701,"~/etc/digdag.properties"
+-'  4  27  ~/etc/digdag.properties
+|4,39,4,27,1629331701,"~/etc/digdag.properties"
+-'  1  0  ~/etc/digdag.properties
+|4,39,1,0,1629331681,"~/etc/digdag.properties"
+-'  1  0  ~/etc/digdag.properties
+|4,39,1,0,1629331681,"~/etc/digdag.properties"
+-'  1  0  ~/etc/digdag.properties
+|4,39,1,0,1629331681,"~/etc/digdag.properties"
+
+# ファイル内マークの履歴 (新しいものから古いもの):
+
+> ~/etc/digdag.properties
+	*	1630208929	0
+	"	4	27
+	^	4	28
+	.	4	27
+	+	4	16
+	+	6	26
+	+	4	27
+
+> /var/log/digdag/access.log
+	*	1629333293	0
+	"	449	0
